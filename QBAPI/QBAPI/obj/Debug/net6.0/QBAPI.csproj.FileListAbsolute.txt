@@ -1,3 +1,10 @@
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.csproj.AssemblyReference.cache
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.AssemblyInfoInputs.cache
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.AssemblyInfo.cs
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.csproj.CoreCompileInputs.cache
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\appsettings.json
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\QBAPI.exe
@@ -49,13 +56,6 @@ C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\runtimes\win\lib\netco
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.csproj.AssemblyReference.cache
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.AssemblyInfoInputs.cache
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.AssemblyInfo.cs
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.csproj.CoreCompileInputs.cache
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\QBAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\abedb\Desktop\QBAPI\QBAPI\QBAPI\obj\Debug\net6.0\scopedcss\bundle\QBAPI.styles.css
