@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using QBAPI.DBContext;
+using QBAPI.DTOs.CloudinarySettings;
 using QBAPI.Manager.Authentication;
+using QBAPI.Manager.FileUploader;
+using QBAPI.Manager.Questions;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,8 +47,12 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<DbContext, ApplicationDbContext>();
 builder.Services.AddScoped<IAuthentication, Authentication>();
+builder.Services.AddScoped<IFileUploader, FileUploader>();
+builder.Services.AddScoped<IQuestionManager, QuestionManager>();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();

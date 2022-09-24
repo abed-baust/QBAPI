@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using QBAPI.AuthRoles;
 using QBAPI.DataModels;
 using QBAPI.DTOs;
+using QBAPI.DTOs.QuestionDtos;
 using QBAPI.Manager.Authentication;
+using QBAPI.Manager.FileUploader;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,6 +22,7 @@ namespace QBAPI.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly IFileUploader _ifileuploader;
 
         private readonly IAuthentication _iAuthentication;
 
@@ -26,13 +31,15 @@ namespace QBAPI.Controllers
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IConfiguration configuration,
-            IAuthentication authentication
+            IAuthentication authentication,
+            IFileUploader fileUploader
             )
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _iAuthentication = authentication;
+            _ifileuploader = fileUploader;
         }
 
         [HttpPost]
@@ -44,19 +51,38 @@ namespace QBAPI.Controllers
         }
 
         [HttpPost]
-        [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        [Route("register-student")]
+        public async Task<IActionResult> RegisterStudent([FromBody] RegisterModel model)
         {
-            var token = await _iAuthentication.Register(model);
+            var token = await _iAuthentication.RegisterStudent(model);
             return Ok(token);
         }
 
         [HttpPost]
-        [Route("register-admin")]
+        [Route("registersuper-admin")]
         public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
         {
             var token = await _iAuthentication.RegisterAdmin(model);
             return Ok(token);
         }
+
+        [Authorize(Roles = UserRoles.SuperAdmin)]
+        [HttpPost]
+        [Route("registersuper-uploader")]
+        public async Task<IActionResult> RegisterUploader([FromBody] RegisterModel model)
+        {
+            var token = await _iAuthentication.RegisterUploader(model);
+            return Ok(token);
+        }
+
+        [Authorize(Roles = UserRoles.SuperAdmin)]
+        [HttpPost]
+        [Route("registersuper-teacher")]
+        public async Task<IActionResult> RegisterTeacher([FromBody] RegisterModel model)
+        {
+            var token = await _iAuthentication.RegisterTeacher(model);
+            return Ok(token);
+        }
+
     }
 }

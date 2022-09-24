@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "896a0684-0a4e-414b-828a-44a88020893c",
+		"name": "QBAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16542424"
+	},
+	"item": [
+		{
+			"name": "GetAllQuestions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWJlZEJhdXN0IiwianRpIjoiNGI5ZjYzOGMtMjIyMS00MTliLTk0ZjgtYzJlZDc3NWEwZTYxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiU3R1ZGVudCIsImV4cCI6MTY2NDAzMDEzMywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.F12A1NqvM0T2pr5G_XpvkMMtluBzMlDtULhM3O69fXQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7074/api/QuestionsUpload/GetAllQuestions",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7074",
+					"path": [
+						"api",
+						"QuestionsUpload",
+						"GetAllQuestions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploadQuestion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "File",
+							"type": "file",
+							"src": "/C:/Users/abedb/Downloads/loukgubz0zs5wxubwxo4 (1).pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:7074/api/QuestionsUpload/uploadQuestion?Department=CSE&Semister=1&Level=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7074",
+					"path": [
+						"api",
+						"QuestionsUpload",
+						"uploadQuestion"
+					],
+					"query": [
+						{
+							"key": "Department",
+							"value": "CSE"
+						},
+						{
+							"key": "Semister",
+							"value": "1"
+						},
+						{
+							"key": "Level",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"abedBaust\",\r\n  \"password\": \"Dummy@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7074/api/Authenticate/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7074",
+					"path": [
+						"api",
+						"Authenticate",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create uploader",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"uploader\",\r\n  \"email\": \"uploader@example.com\",\r\n  \"password\": \"Dummy@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7074/api/Authenticate/registersuper-uploader",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7074",
+					"path": [
+						"api",
+						"Authenticate",
+						"registersuper-uploader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registersuper-admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"Dummy@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7074/api/Authenticate/registersuper-admin",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7074",
+					"path": [
+						"api",
+						"Authenticate",
+						"registersuper-admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllQuestionsBy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJqdGkiOiI1NWU1OWVhYy04NjExLTRiY2UtYTU3ZS04NWY4ZTc3OWNlMWYiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiVGVhY2hlciIsIlN0dWRlbnQiLCJTdXBlckFkbWluIiwiVXBsb2FkZXJBZG1pbiJdLCJleHAiOjE2NjQwMzMyMzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTAwMCIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NDIwMCJ9.nl6WCAe1LtlwOaqu2vApgvESXtBRcH6_Z__OXz2G70s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7074/api/QuestionsUpload/GetAllQuestionsBy?Department=CSE&Semister=1&Level=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7074",
+					"path": [
+						"api",
+						"QuestionsUpload",
+						"GetAllQuestionsBy"
+					],
+					"query": [
+						{
+							"key": "Department",
+							"value": "CSE"
+						},
+						{
+							"key": "Semister",
+							"value": "1"
+						},
+						{
+							"key": "Level",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

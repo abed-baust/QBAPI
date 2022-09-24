@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using QBAPI.DataModels;
 
 namespace QBAPI.DBContext
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
+        public ApplicationDbContext() : base()
+        {
+
+        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
@@ -13,5 +18,6 @@ namespace QBAPI.DBContext
         {
             base.OnModelCreating(builder);
         }
+        public DbSet<QuestionModel> QuestionModel { get; set; }
     }
 }

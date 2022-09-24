@@ -56,7 +56,7 @@ namespace QBAPI.Manager.Authentication
             return new TokenDto { };
         }
 
-        public async Task<Response> Register([FromBody] RegisterModel model)
+        public async Task<Response> RegisterStudent([FromBody] RegisterModel model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
             if (userExists != null)
@@ -71,6 +71,67 @@ namespace QBAPI.Manager.Authentication
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
                 return new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." };
+
+            if (!await _roleManager.RoleExistsAsync(UserRoles.Student))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Student));
+
+            if (await _roleManager.RoleExistsAsync(UserRoles.Student))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.Student);
+            }
+
+            return new Response { Status = "Success", Message = "User created successfully!" };
+        }        
+        public async Task<Response> RegisterTeacher([FromBody] RegisterModel model)
+        {
+            var userExists = await _userManager.FindByNameAsync(model.Username);
+            if (userExists != null)
+                return new Response { Status = "Error", Message = "User already exists!" };
+
+            IdentityUser user = new()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.Username
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+                return new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." };
+
+            if (!await _roleManager.RoleExistsAsync(UserRoles.Teacher))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Teacher));
+
+            if (await _roleManager.RoleExistsAsync(UserRoles.Teacher))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.Teacher);
+            }
+
+            return new Response { Status = "Success", Message = "User created successfully!" };
+        }        
+        
+        public async Task<Response> RegisterUploader([FromBody] RegisterModel model)
+        {
+            var userExists = await _userManager.FindByNameAsync(model.Username);
+            if (userExists != null)
+                return new Response { Status = "Error", Message = "User already exists!" };
+
+            IdentityUser user = new()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.Username
+            };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+                return new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." };
+
+            if (!await _roleManager.RoleExistsAsync(UserRoles.UploaderCR))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.UploaderCR));
+
+            if (await _roleManager.RoleExistsAsync(UserRoles.UploaderCR))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.UploaderCR);
+            }
 
             return new Response { Status = "Success", Message = "User created successfully!" };
         }
@@ -94,7 +155,13 @@ namespace QBAPI.Manager.Authentication
             if (!await _roleManager.RoleExistsAsync(UserRoles.SuperAdmin))
                 await _roleManager.CreateAsync(new IdentityRole(UserRoles.SuperAdmin));
             if (!await _roleManager.RoleExistsAsync(UserRoles.Student))
-                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Student));
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Student));            
+            
+            if (!await _roleManager.RoleExistsAsync(UserRoles.Teacher))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.Teacher));            
+            
+            if (!await _roleManager.RoleExistsAsync(UserRoles.UploaderCR))
+                await _roleManager.CreateAsync(new IdentityRole(UserRoles.UploaderCR));
 
             if (await _roleManager.RoleExistsAsync(UserRoles.SuperAdmin))
             {
@@ -103,6 +170,14 @@ namespace QBAPI.Manager.Authentication
             if (await _roleManager.RoleExistsAsync(UserRoles.SuperAdmin))
             {
                 await _userManager.AddToRoleAsync(user, UserRoles.Student);
+            }            
+            if (await _roleManager.RoleExistsAsync(UserRoles.SuperAdmin))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.Teacher);
+            }            
+            if (await _roleManager.RoleExistsAsync(UserRoles.SuperAdmin))
+            {
+                await _userManager.AddToRoleAsync(user, UserRoles.UploaderCR);
             }
             return new Response { Status = "Success", Message = "User created successfully!" };
         }
