@@ -29,13 +29,7 @@ namespace QBAPI.Manager.Questions
         
         public async Task<List<GetQuestionDtos>> GetQuestionsBy(QuestionSearchingDto request)
         {
-            if (request.Department != null && request.Semister!=null && request.Level == null)
-            {
-                var QuestionsDeptSem = _context.QuestionModel
-                     .Where(_ =>
-                         _.Department.ToLower() == request.Department.ToLower() &&
-                         _.Semister.ToLower() == request.Semister.ToLower()
-                     )
+            var ques = _context.QuestionModel
                      .Select(_ => new GetQuestionDtos
                      {
                          Department = _.Department,
@@ -43,29 +37,25 @@ namespace QBAPI.Manager.Questions
                          Level = _.Level,
                          QuestionURL = _.QuestionURL,
                      }).ToList();
-                return await Task.FromResult(QuestionsDeptSem);
-            }
 
-            if (request.Department != null && request.Semister != null && request.Level!=null)
+            if (request.Department != null)
             {
-                var QuestionsAll = _context.QuestionModel
-                 .Where(_ =>
-                     _.Department.ToLower() == request.Department.ToLower() &&
-                     _.Semister.ToLower() == request.Semister.ToLower() &&
-                     _.Level.ToLower() == request.Level.ToLower()
-
-                 )
-                 .Select(_ => new GetQuestionDtos
-                 {
-                     Department = _.Department,
-                     Semister = _.Semister,
-                     Level = _.Level,
-                     QuestionURL = _.QuestionURL,
-                 }).ToList();
-                return await Task.FromResult(QuestionsAll);
+                ques = ques.Where(x => x.Department == request.Department).ToList();
+               
             }
 
-            return null;
+            if (request.Semister != null)
+            {
+                ques = ques.Where(x => x.Semister == request.Semister).ToList();
+
+            }
+            if(request.Level != null)
+            {
+                ques = ques.Where(x => x.Level == request.Level).ToList();
+
+            }
+
+            return ques;
         }
     }
 }
