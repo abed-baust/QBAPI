@@ -1,4 +1,5 @@
-﻿using QBAPI.DBContext;
+﻿using CB.Utility.Pagination;
+using QBAPI.DBContext;
 using QBAPI.DTOs.QuestionDtos;
 
 namespace QBAPI.Manager.Questions
@@ -55,7 +56,7 @@ namespace QBAPI.Manager.Questions
 
             }
 
-            return ques;
+            return ques.ApplyPagination(request.PagingOptions).ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CB.Utility.Pagination;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -43,10 +44,11 @@ namespace QBAPI.Controllers.Questions
             return Ok(result);
         }
 
-        [Authorize(Roles = UserRoles.Student + "," + UserRoles.Teacher + "," + UserRoles.SuperAdmin)]
+        //[Authorize(Roles = UserRoles.Student + "," + UserRoles.Teacher + "," + UserRoles.SuperAdmin)]
         [HttpGet("GetAllQuestionsBy")]
-        public async Task<IActionResult> GetQuestionsByDeptList([FromQuery] QuestionSearchingDto request)
+        public async Task<IActionResult> GetQuestionsByDeptList([FromQuery] QuestionSearchingDto request, [FromQuery] PagingOptions pagingOptions)
         {
+            request.PagingOptions ??= pagingOptions;
             var result = await _questionManager.GetQuestionsBy(request);
             return Ok(result);
         }        
